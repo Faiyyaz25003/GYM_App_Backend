@@ -5,6 +5,7 @@ import cors from "cors";
 import progressRoutes from "./Routes/progressRoutes.js";
 import superAdminRoutes from "./Routes/superAdminRoutes.js";
 import adminRoutes from "./Routes/adminRoutes.js";
+import trainerRoutes from "./Routes/trainerRoutes.js";
 
 dotenv.config();
 
@@ -18,7 +19,7 @@ app.use(express.json({ limit: "10mb" }));
 app.use("/api/progress", progressRoutes);
 app.use("/api/superadmin", superAdminRoutes);
 app.use("/api/admin", adminRoutes);
-
+app.use("/api/trainers", trainerRoutes);
 
 // MongoDB Connection
 mongoose
