@@ -6,7 +6,7 @@ import planRoutes from "./Routes/planRoutes.js";
 import exerciseRoutes from "./Routes/exerciseRoutes.js";
 import adminRoutes from "./Routes/adminRoutes.js";
 import trainerRoutes from "./Routes/trainerRoutes.js";
-// import userRoutes from "./Routes/userRoutes.js";
+import userRoutes from "./Routes/userRoutes.js";
 
 dotenv.config();
 
@@ -24,7 +24,7 @@ app.use("/api/admin", adminRoutes);
 app.use("/api/plans", planRoutes);
 app.use("/api/exercises", exerciseRoutes);
 app.use("/api/trainers", trainerRoutes);
-// app.use("/api/users", userRoutes);
+app.use("/api/users", userRoutes);
 
 
 
