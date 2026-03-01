@@ -66,10 +66,10 @@ export const loginUser = async (req, res) => {
     const { email, password } = req.body;
 
     const user = await User.findOne({ email });
-    if (!user) return res.status(400).json({ msg: "Invalid credentials" });
+    if (!user) return res.status(400).json({ message: "Invalid credentials" });
 
     const isMatch = await bcrypt.compare(password, user.password);
-    if (!isMatch) return res.status(400).json({ msg: "Invalid credentials" });
+    if (!isMatch) return res.status(400).json({ message: "Invalid credentials" });
 
     const token = jwt.sign(
       { id: user._id },
@@ -77,12 +77,19 @@ export const loginUser = async (req, res) => {
       { expiresIn: process.env.JWT_EXPIRES }
     );
 
-    res.json({ token });
+    res.json({
+      token,
+      user: {
+        _id: user._id,
+        fullName: user.fullName,
+        email: user.email,
+        membershipPlan: user.membershipPlan,
+      },
+    });
   } catch (err) {
     res.status(500).json({ error: err.message });
   }
 };
-
 /* ================= GET PROFILE ================= */
 export const getProfile = async (req, res) => {
   try {
