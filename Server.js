@@ -5,8 +5,10 @@ import cors from "cors";
 import planRoutes from "./Routes/planRoutes.js";
 import exerciseRoutes from "./Routes/exerciseRoutes.js";
 import adminRoutes from "./Routes/adminRoutes.js";
-import trainerRoutes from "./Routes/trainerRoutes.js";
 import userRoutes from "./Routes/userRoutes.js";
+import trainerRoutes from "./Routes/trainerRoutes.js";
+import scheduleRoutes from "./Routes/scheduleRoutes.js";
+
 
 dotenv.config();
 
@@ -21,10 +23,12 @@ app.use("/uploads", express.static("uploads"));
 // Routes
 app.use("/api/admin", adminRoutes);
 app.use("/api/admin", adminRoutes);
+app.use("/api/users", userRoutes);
 app.use("/api/plans", planRoutes);
 app.use("/api/exercises", exerciseRoutes);
 app.use("/api/trainers", trainerRoutes);
-app.use("/api/users", userRoutes);
+app.use("/api/schedules", scheduleRoutes);
+
 
 
 
